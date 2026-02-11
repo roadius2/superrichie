@@ -202,10 +202,25 @@ export async function getFileUrl(slug: string, filename: string) {
 }
 
 // Git/Deploy operations
-export async function pushToGit(slug: string, files: Record<string, string>) {
-  return mosaicFetch(`/${slug}/git/push`, {
+export async function pushToGit(
+  slug: string,
+  files: { path: string; content: string }[],
+  message: string = "Deploy from API",
+  deploy: boolean = true
+) {
+  // Convert files to base64
+  const encodedFiles = files.map((file) => ({
+    path: file.path,
+    content: Buffer.from(file.content).toString("base64"),
+  }));
+
+  return mosaicFetch(`/${slug}/git/files/batch`, {
     method: "POST",
-    body: JSON.stringify({ files }),
+    body: JSON.stringify({
+      files: encodedFiles,
+      message,
+      deploy,
+    }),
   });
 }
 

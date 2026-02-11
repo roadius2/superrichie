@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "setup-mosaic": "tsx scripts/setup-mosaic.ts",
-    "deploy": "npm run build && mosaic-deploy"
+    "deploy-mosaic": "tsx scripts/deploy-mosaic.ts",
+    "deploy-status": "tsx scripts/deploy-status.ts"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.49.3",
