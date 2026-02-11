@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { db } from "@/lib/db";
+import { db } from "@/lib/db-mosaic";
 import { sendEmail, generateMagicLinkEmail } from "@/lib/email";
 
 export async function POST(request: NextRequest) {
