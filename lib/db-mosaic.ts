@@ -3,13 +3,7 @@
 
 import { mosaic } from "./mosaic";
 
-const PROJECT_SLUG = process.env.MOSAIC_PROJECT_SLUG || "";
-
-if (!PROJECT_SLUG) {
-  console.warn(
-    "MOSAIC_PROJECT_SLUG not set - run: npm run setup-mosaic"
-  );
-}
+const PROJECT_SLUG = process.env.MOSAIC_PROJECT_SLUG || "superrichie";
 
 export interface User {
   id: string;
