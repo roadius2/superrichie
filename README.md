@@ -56,15 +56,39 @@ cp .env.example .env.local
 
 ## Production Deployment
 
-For production deployment, you'll need to:
+SuperRichie is integrated with **Mosaic Platform** for production deployment, providing:
+- PostgreSQL 17 database with pgvector
+- S3-compatible storage
+- Redis (Pro+ plans)
+- User authentication
+- Git hosting and auto-deploy
+- Container deployment
 
-1. Set up a real database (PostgreSQL, MongoDB, etc.)
-2. Configure email service (SendGrid, AWS SES, etc.)
-3. Set environment variables for production
-4. Deploy to Vercel, Netlify, or your preferred hosting
+### Initial Setup
 
-### Deploy to Vercel
+```bash
+# Set your Mosaic API key in .env.local
+MOSAIC_API_KEY=mk_your_api_key
 
+# Run setup to create project and initialize database
+npm run setup-mosaic
+```
+
+This will:
+1. Create a Mosaic project with slug `superrichie`
+2. Provision a dedicated PostgreSQL database
+3. Initialize database schema (users, magic_link_tokens)
+4. Configure Git repository
+5. Set up deployment at `https://superrichie.mosaic.site`
+
+### Deploy to Mosaic
+
+Option 1 - Via Git (recommended):
+```bash
+git push https://git.mosaic.site/[your-username]/superrichie.git main
+```
+
+Option 2 - Via Vercel:
 ```bash
 npm install -g vercel
 vercel

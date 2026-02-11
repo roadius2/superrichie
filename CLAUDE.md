@@ -63,9 +63,30 @@ npm run lint
 - Font: Courier New (monospace)
 - Effects: text-shadow-glow, border-glow for terminal aesthetic
 
-## Production Setup
+## Production Setup with Mosaic Platform
 
-1. Configure real database connection in `lib/db.ts`
-2. Set up email service in `lib/email.ts`
-3. Set environment variables (see `.env.example`)
-4. Deploy to Vercel or preferred host
+### Initial Setup
+```bash
+# Set Mosaic API key
+MOSAIC_API_KEY=mk_xxxxx
+
+# Initialize project
+npm run setup-mosaic
+```
+
+### Database Layer
+- Production: Uses Mosaic Platform PostgreSQL (`lib/db-mosaic.ts`)
+- Development: Can use in-memory fallback (`lib/db.ts`)
+- Mosaic client library: `lib/mosaic.ts`
+
+### Deployment
+1. Push to Mosaic Git: `git push [mosaic-git-url] main`
+2. Or deploy to Vercel with env vars set
+3. Live at: `https://superrichie.mosaic.site`
+
+### Environment Variables
+```
+MOSAIC_API_KEY=mk_xxxxx
+MOSAIC_PROJECT_SLUG=superrichie
+NEXT_PUBLIC_BASE_URL=https://superrichie.mosaic.site
+```
