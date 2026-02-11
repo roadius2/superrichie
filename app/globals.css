@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-richie-black text-richie-green;
+  font-family: 'Courier New', monospace;
+}
+
+@layer utilities {
+  .text-shadow-glow {
+    text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00;
+  }
+
+  .border-glow {
+    box-shadow: 0 0 10px #00ff00;
+  }
+}
